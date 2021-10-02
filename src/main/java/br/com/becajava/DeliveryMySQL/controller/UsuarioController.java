@@ -3,6 +3,7 @@ package br.com.becajava.DeliveryMySQL.controller;
 import br.com.becajava.DeliveryMySQL.entities.Usuario;
 import br.com.becajava.DeliveryMySQL.repositories.UsuarioRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,13 @@ public class UsuarioController {
     //Apesar da URL ser a mesma (/contacts), o que garante os métodos HTTP diferentes são cada uma das anotações usadas em cada método.
     //
     // lista todos os contatos
+    //
+    // TESTE
+    //
+
+    //
+    // END TESTE
+    //
     @GetMapping
     public List<Usuario> findAll(){
         return repositorio.findAll();
@@ -40,6 +48,7 @@ public class UsuarioController {
     // lista por id
     @GetMapping(path = {"/{id}"})
     public ResponseEntity findById(@PathVariable long id){
+
         return repositorio.findById(id)
                 //A lógica para obter um contato específico é utilizar o método findById da interface JpaRepository
                 // (que irá fazer um select * from contacts where id = ?). Caso o registro seja encontrado, é retornado
