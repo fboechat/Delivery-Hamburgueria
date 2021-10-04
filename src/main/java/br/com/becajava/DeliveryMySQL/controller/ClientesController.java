@@ -1,9 +1,8 @@
 package br.com.becajava.DeliveryMySQL.controller;
 
-import br.com.becajava.DeliveryMySQL.entities.Usuario;
-import br.com.becajava.DeliveryMySQL.repositories.UsuarioRepository;
+import br.com.becajava.DeliveryMySQL.entities.clientes;
+import br.com.becajava.DeliveryMySQL.repositories.ClientesRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,14 +10,14 @@ import java.util.List;
 @RestController // representa uma classe com endpoints (URIs que serão expostas pela API)
 // e a classe indica que o valor retornado pelos métodos
 // devem ser vinculados ao corpo da resposta (response body).
-@RequestMapping({"/contatos"}) // indica que a URL da API desse controller começa com /contatos,
-// isso significa que pode-se acessar usando a URL http://localhost:8080/contatos (acesso local).
+@RequestMapping({"/clientes"}) // indica que a URL da API desse controller começa com /contatos,
+// isso significa que pode-se acessar usando a URL http://localhost:8080/clientes (acesso local).
 
-public class UsuarioController {
+public class ClientesController {
 
-    private UsuarioRepository repositorio; // chama o DAO
+    private ClientesRepository repositorio; // chama o DAO
 
-    UsuarioController(UsuarioRepository contatoRepository) {
+    ClientesController(ClientesRepository contatoRepository) {
         this.repositorio = contatoRepository;
     }
     // métodos do CRUD aqui
@@ -42,7 +41,7 @@ public class UsuarioController {
     // END TESTE
     //
     @GetMapping
-    public List<Usuario> findAll(){
+    public List<clientes> findAll(){
         return repositorio.findAll();
     }
     // lista por id
@@ -67,22 +66,25 @@ public class UsuarioController {
     //   "telefone": "(22) 111-1111"
     //}
     @PostMapping
-    public Usuario create(@RequestBody Usuario contato){
+    public clientes create(@RequestBody clientes contato){
         return repositorio.save(contato);
     }
 
     // atualizando contato
     @PutMapping(value="/{id}")
+
     public ResponseEntity update(@PathVariable("id") long id,
-                                 @RequestBody Usuario contato) {
+                                 @RequestBody clientes contato) {
         return repositorio.findById(id)
                 .map(record -> {
                     record.setNome(contato.getNome());
                     record.setEmail(contato.getEmail());
                     record.setTelefone(contato.getTelefone());
-                    Usuario updated = repositorio.save(record);
+                    clientes updated = repositorio.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
+
+
     }
 
     // detelando um contato

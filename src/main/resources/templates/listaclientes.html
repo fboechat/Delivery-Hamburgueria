@@ -1,25 +1,28 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title>Lista de clientes</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <meta charset="utf-8"/>
+    <title>Lista de login de usuarios cadastrados</title>
 </head>
 <body>
-<h1>Person List</h1>
-<a href="adicionaclientes">Adicione um cliente</a>
-<br/><br/>
-<div>
-    <table border="1">
-        <tr>
-            <th>Primeiro Nome</th>
-            <th>Segundo Nome</th>
-        </tr>
-        <tr th:each ="person : ${persons}">
-            <td th:utext="${person.firstName}">...</td>
-            <td th:utext="${person.lastName}">...</td>
-        </tr>
-    </table>
-</div>
+<h1 align="center">Lista de usuarios</h1>
+<br/>
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="listaclientes : ${produtos}">
+        <td th:text="${listaclientes.nome}">Nome</td>
+        <td th:text="${listaclientes.email}">Email</td>
+        <td th:text="${listaclientes.telefone}">Telefone</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
