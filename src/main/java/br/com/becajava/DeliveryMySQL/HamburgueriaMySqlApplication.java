@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DeliveryMySqlApplication {
+public class HamburgueriaMySqlApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DeliveryMySqlApplication.class, args);
+		SpringApplication.run(HamburgueriaMySqlApplication.class, args);
 	}
 
 	//
